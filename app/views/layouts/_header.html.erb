@@ -1,17 +1,21 @@
 <header class="navbar navbar-fixed-top navbar-inverse" style="background-color: darkblue">
   <div class="navbar-inner">
-    <div class="container">
-      <%= link_to "Bug Tracker", '#', id: "logo" %>
-      <nav class="navbar">         
-        <ul class="nav pull-right">
-        
-<!--         <ul><li><%= link_to "Home",  "" ,id:"co"%></li></ul>
- -->         <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
-   
-        </ul>
-
-
-       </nav> 
-    </div>
+		<div class="container">
+	  	<%= link_to "Bug Tracker", '#', id: "logo" %>
+	  	<nav class="navbar">         
+			<ul class="nav pull-right">
+			 <li><%if logged_in?%>
+			 <%=image_tag current_user.image.url(:thumb) , :class => "style_image"   %>
+      
+		  <a> <%= current_user.name %></a>
+       <%= link_to "Sign Out", signout_path%></li>
+			 <%else%>
+				<a href="#"><i class="fa fa-fw fa-user"></i><%=link_to "Sign In", signin_path%></a>
+			  <!-- <a href="#"><i class="fa fa-fw fa-user"></i> Sign Up</a> --> 
+				<a><i class="fa fa-fw fa-user"></i><%= link_to "Sign Up", signup_path%> </a>
+				<%end%>
+			</ul>
+			</nav> 
+		</div>
   </div>
 </header>

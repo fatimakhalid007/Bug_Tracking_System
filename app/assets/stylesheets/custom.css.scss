@@ -78,8 +78,11 @@ p {
 }
 /* footer */
 
-footer {
-  margin-top: 45px;
+.footer {
+  position: fixed;
+  bottom:0;
+  margin-bottom:0px;
+  width:100%;
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
   color:#D3D3D3;
@@ -470,4 +473,59 @@ footer {
   #dropdown .panel-body .navbar-nav {
     margin: 0;
   }
+}
+
+/* mics */
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+.style-border{
+  border:4px solid blue;
+  padding :3px;
+}
+
+.field_with_errors {
+ /* @extend .control-group;*/
+ /* @extend .error;*/
+    @extend .alert;
+    @extend .alert-danger;
+}
+
+.style_image {
+  border-right: 1px solid #000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-top:20px;
+}
+/* profile page */
+.pf-image{
+ align-content:center;
+ margin-left: 430px ;
+}
+.n-font{
+  font-size: 29px;
 }

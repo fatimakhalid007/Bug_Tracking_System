@@ -1,0 +1,13 @@
+<% provide(:title, 'Sign up') %>
+<!-- <div class="style-border"> --><h1>Sign up</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+     <%= form_for(@user, html:{multipart:true}) do |f| %>
+    <%= render 'signUpForm', f: f %></div>.
+
+      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+    <% end %>
+  <!-- </div> -->
+  </div>.
+</div>

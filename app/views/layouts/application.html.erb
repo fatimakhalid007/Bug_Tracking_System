@@ -8,32 +8,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= render 'layouts/shim' %>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-</head>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+  </head>
   <body>
   	<%= render 'layouts/header' %>
   	   
 <!--       <div class="container-fluid">
         <div class="row-fluid"> -->
-          
-           	<%=render 'layouts/sidebar'%>
-          
-<!--             <div class="container">
- -->            	<div class="container-fluid">
-            	  <div class="side-body">
-            <% flash.each do |key, value| %>
-              <div class="alert alert-<%= key %>"><%= value %></div>
-            <% end %>
- 
-            <%= yield %>
+          <%if logged_in? %>
 
-          <%= render 'layouts/footer' %>
-          </div>
-            <div class="side-body">
-          <%= debug(params) if Rails.env.development? %>
+           	<%=render 'layouts/sidebar'%>
+            <%=render 'layouts/content'%>
+            <%else%>
+            <%=render 'layouts/logoutcontent'%>
+          <%end%>
+        <div style="padding-top: 100px ">  <%= debug(params) if Rails.env.development? %></div>
 <!--         </div>
  -->    <!--   </div>
     </div> -->
