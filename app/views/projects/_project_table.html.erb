@@ -1,0 +1,36 @@
+<table class="t-width">
+  <thead>
+    <tr>
+      <th>Title </th>
+      <th>Description </th>
+      <% if current_user.user_type!='Manager'%>
+      <th>Owner </th>
+      <%end%>
+      <th>Assigned </th>
+      <th colspan="4"> </th>
+    </tr>
+  </thead>
+
+  <tbody >
+    <% @projects.each do |project| %>
+      <tr>
+        <% if project.owner_id==current_user.id%>
+        <td><%= project.title %></td>
+        <td><%= project.description %></td>
+        <% if current_user.user_type!='Manager'%>
+        <td><%= project.owner_id %></td>
+        <%end%>
+        <td><%= project.assigned_id %></td>
+        <td><%= link_to 'Show', project %></td>
+        <td><%= link_to 'Edit', edit_project_path(project) %></td>
+        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%if project.assigned_id==nil%>
+        <td><%=link_to 'Assign Project',edit_project_path(project)%></td>
+        <%else%>
+        <td><%= link_to 'UnAssign Porject',edit_project_path(project)%>
+        <%end%>
+      </tr>
+      <%end%>
+    <% end %>
+  </tbody>
+</table>

@@ -3,6 +3,9 @@ class UsersController < ApplicationController
 	def new
 		@user=User.new
 	end
+	def index
+		@user=User.all
+	end
 	def create
     @user = User.new(user_params)
     if @user.save
@@ -33,6 +36,14 @@ class UsersController < ApplicationController
 	  def show
    @user = User.find(params[:id])
   end
+  def developers
+  	@user=User.where(user_type:'Developer')
+  end
+  def quas
+  	@user=User.where(user_type:'Quality Assurance')
+  end
+  helper_method:developers
+  helper_method:quas
  private
 		def user_params
       params.require(:user).permit(:email,:password,:password_confirmation,:name,:user_type,:image)

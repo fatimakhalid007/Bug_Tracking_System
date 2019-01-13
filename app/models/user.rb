@@ -1,5 +1,10 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
+  
+  has_many :projects, :class_name => "Project", :foreign_key => :owner_id
+  has_many :assigned_projects, :class_name => "Project", :foreign_key => :assigned_id
+
+
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

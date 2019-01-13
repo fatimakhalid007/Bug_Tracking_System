@@ -1,11 +1,11 @@
 <% provide(:title, 'Profile') %>
 <h1>Profile</h1>
 <div class="pf-image">
-<%=image_tag current_user.image.url(:thumb) %><br>
- <p class="n-font"><b><%=current_user.name%></b></p>
- <%=current_user.user_type%><br>
+<%=image_tag @user.image.url(:thumb) %><br>
+ <p class="n-font"><b><%=@user.name%></b></p>
+ <%=@user.user_type%><br>
 
- <%=current_user.email%>
+ <%=@user.email%>
 
 
 

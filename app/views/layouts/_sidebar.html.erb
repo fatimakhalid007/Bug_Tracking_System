@@ -43,26 +43,26 @@
     <div class="side-menu-container">
         <ul class="nav navbar-nav">
 
-            <li><a href="#"><span class="glyphicon glyphicon-send"></span> Link</a></li>
-            <li class="active"><a href="#"><span class="glyphicon glyphicon-plane"></span> Active Link</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-cloud"></span> Link</a></li>
-
+<!--             <li><a href="#"><span class="glyphicon glyphicon-send"></span> Link</a></li>
+ -->            <li class="active"><a href="#"><span class="glyphicon glyphicon-plane"></span> Active Link</a></li>
+<!--             <li><a href="#"><span class="glyphicon glyphicon-cloud"></span> Link</a></li>
+ -->
             <!-- Dropdown-->
          <!--    <li class="panel panel-default" id="dropdown">
                 <a data-toggle="collapse" href="#dropdown-lvl1">
                     <span class="glyphicon glyphicon-user"></span> Sub Level <span class="caret"></span>
-                </a>
- -->
-               <!--  <!-- Dropdown level 1 -->
-<!--                 <div id="dropdown-lvl1" class="panel-collapse collapse">
+                </a> -->
+
+                <!-- Dropdown level 1 -->
+             <!--    <div id="dropdown-lvl1" class="panel-collapse collapse">
                     <div class="panel-body">
                         <ul class="nav navbar-nav">
                             <li><a href="#">Link</a></li>
                             <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
+                            <li><a href="#">Link</a></li> -->
 
-                            <!-- Dropdown level 2 -->
-       <!--                      <li class="panel panel-default" id="dropdown">
+                            <!-- Dropdown level 2-->
+ <!--                            <li class="panel panel-default" id="dropdown">
                                 <a data-toggle="collapse" href="#dropdown-lvl2">
                                     <span class="glyphicon glyphicon-off"></span> Sub Level <span class="caret"></span>
                                 </a>
@@ -81,8 +81,30 @@
                 </div>
             </li> -->
 
-            <li><a href="#"><span class="glyphicon glyphicon-signal"></span> Link</a></li>
+<!--              <li><a href="#"><span class="glyphicon glyphicon-signal"></span> Link</a></li>
+ -->                      <!-- Dropdown-->
+            <li class="panel panel-default" id="dropdown">
+                <a data-toggle="collapse" href="#dropdown-lvl1">
+                    <span class="glyphicon glyphicon-user"></span> Project<span class="caret"></span>
+                </a>
 
+                <!-- Dropdown level 1 -->
+                <div id="dropdown-lvl1" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <ul class="nav navbar-nav">
+                        <li><%=link_to "Add Project",new_project_path(current_user)%></li>
+                            <li><%= link_to "Project Update", edit_user_path(current_user)%></li>
+
+                            <li><a href="#">Link</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+
+       <!--      <li><a href="#"><span class="glyphicon glyphicon-send"></span> Link</a></li>
+            <li class="active"><a href="#"><span class="glyphicon glyphicon-plane"></span> Active Link</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-cloud"></span> Link</a></li> -->
+            <li><a><span><%=link_to "All User" ,users_path%></span></a></li>
                      <!-- Dropdown-->
             <li class="panel panel-default" id="dropdown">
                 <a data-toggle="collapse" href="#dropdown-lvl1">
@@ -99,7 +121,14 @@
                         </ul>
                     </div>
                 </div>
+
             </li>
+            <li><%= link_to "All Projects", projects_path%></li><br>
+               <li><%=link_to "view profile", user_path(current_user)%></li>
+               <li><%= link_to "Profile Update", edit_user_path(current_user)%></li>
+                    <li><%= link_to "Developers", developers_path%></li><br>
+                    <li><%= link_to "Quality Assurance", quas_path%></li><br>
+
         </ul>
     </div><!-- /.navbar-collapse -->
 </nav>
