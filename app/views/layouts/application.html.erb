@@ -18,10 +18,17 @@
 <!--       <div class="container-fluid">
         <div class="row-fluid"> -->
           <%if logged_in? %>
-
+          <%if current_user.user_type=='Developer'%>
+             <%=render 'layouts/developersidebar'%>
+          <%end%>
+          <%if current_user.user_type=='Manager'%>
            	<%=render 'layouts/sidebar'%>
-            <%=render 'layouts/content'%>
-            <%else%>
+          <%end%>
+          <%if current_user.user_type=='Quality Assurance'%>
+              <%=render 'layouts/qa_sidebar'%>
+          <%end%>
+           <%=render 'layouts/content'%>
+          <%else%>
             <%=render 'layouts/logoutcontent'%>
           <%end%>
         <div style="padding-top: 100px ">  <%= debug(params) if Rails.env.development? %></div>

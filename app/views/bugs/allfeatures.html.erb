@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<h1>All Features</h1>
+
+<%= render 'bugs_table'%>
+<br>
+<%if current_user.user_type!='Quality Assurance'%>
+<br><%=link_to 'Assign Features' ,assignfeature_path %>
+<br><%=link_to 'unAssign Features',unAssignfeature_path %>
+<br><%=link_to 'InProgress  Features' ,inprogressfeature_path %>
+<br><%=link_to 'Resolved Feature',resolvedfeature_path %>
+<br><%=link_to 'unResolved Features' ,unresolvedfeature_path %>
+<br><%=link_to 'New Features',newfeature_path %>
+<%end%>

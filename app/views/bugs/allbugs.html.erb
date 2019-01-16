@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bugs</h1>
+
+<%= render 'bugs_table'%>
+<br>
+<%if current_user.user_type!='Quality Assurance'%> 
+<br><%=link_to 'Assign Bugs' ,assignBugs_path %>
+<br><%=link_to 'unAssign Bugs',unAssignBugs_path %>
+<br><%=link_to 'InProgress  Bugs' ,inprogressBugs_path %>
+<br><%=link_to 'Resolved Bugs', resolvedBugs_path %>
+<br><%=link_to 'unResolved Bugs' ,unresolvedBugs_path %>
+<br><%=link_to 'New Bugs',newbug_path %>
+<%end%>

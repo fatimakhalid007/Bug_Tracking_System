@@ -3,6 +3,7 @@ class User < ApplicationRecord
   
   has_many :projects, :class_name => "Project", :foreign_key => :owner_id
   has_many :assigned_projects, :class_name => "Project", :foreign_key => :assigned_id
+  has_many :bugs
 
 
 

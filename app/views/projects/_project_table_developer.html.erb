@@ -1,0 +1,31 @@
+<table class="t-width">
+  <thead>
+    <tr>
+      <th>Title </th>
+      <th>Description </th>
+      <% if current_user.user_type!='Manager'%>
+      <th>Owner </th>
+      <%end%>
+      <th>Assigned </th>
+      <th>bugs count</th>
+      <th>view Bugs</th>
+      <th colspan="4"> </th>
+    </tr>
+  </thead>
+
+  <tbody >
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.id %> <%=project.title%></td>
+        <td><%= project.description %></td>
+        <td><%= project.owner_id %><%="  "+ project_owner_name(project.owner_id).name %></td>
+        <td><%= project.assigned_id %></td>
+        <td><%= projects_bug_count(project.id)%></td>
+        <td><%= link_to 'view bugs', projectBugs_path(project)%></td>
+        <td><%= link_to 'Show', project %></td>
+       
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>

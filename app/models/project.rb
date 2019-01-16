@@ -3,5 +3,6 @@ class Project < ApplicationRecord
   belongs_to :assigned, :class_name => "User"
   validates :title, presence: true,uniqueness: true
   validates :description, presence: true
+  has_many :bugs
 
 end

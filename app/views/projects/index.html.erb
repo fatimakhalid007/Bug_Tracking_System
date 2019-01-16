@@ -1,9 +1,28 @@
 <p id="notice"><%= notice %></p>
 <% provide(:title, 'Projects') %>
 <h1>Projects</h1>
+<%if current_user.user_type=='Developer'%>
+<%=render 'project_table_developer'%>
+<%elsif current_user.user_type=='Quality Assurance'%>
+<%=render 'project_table_qa'%>
+<%=link_to 'Add Bug +' ,new_bug_path%>
+<%else%>
 
 <%= render 'project_table'%>
+<%end%>
+<br>
+<%if current_user.user_type=='Developer'%>
+
+<%elsif current_user.user_type=='Quality Assurance'%>
+
+
+
+<%else%>
+<%= link_to 'Add Project +', new_project_path %>
+<br>
+<%= link_to 'view Assigned Projects', assign_path %>
 
 <br>
+<%= link_to 'view UnAssigned Projects', unAssign_path %>
+<%end%>
 
-<%= link_to 'Add Project +', new_project_path %>

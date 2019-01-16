@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190111072729) do
+ActiveRecord::Schema.define(version: 20190114055258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bugs", force: :cascade do |t|
+    t.string   "bug_title"
+    t.string   "bug_description"
+    t.date     "bug_deadline"
+    t.string   "bug_type"
+    t.string   "bug_status"
+    t.integer  "add_id"
+    t.integer  "assign_id"
+    t.integer  "project_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "screenshot_file_name"
+    t.string   "screenshot_content_type"
+    t.bigint   "screenshot_file_size"
+    t.datetime "screenshot_updated_at"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string   "title"

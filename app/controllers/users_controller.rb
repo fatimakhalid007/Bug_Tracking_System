@@ -7,14 +7,15 @@ class UsersController < ApplicationController
 		@user=User.all
 	end
 	def create
+		 # byebug
     @user = User.new(user_params)
     if @user.save
     	login(params[:user][:email], params[:user][:password])
     	flash[:success] = 'Welcome!'
       redirect_to root_path, :notice => "Signed up!"
-
-    else
-      render 'new'
+		else
+			flash.now[:warning] = 'E-mail and/or password is incorrect.'
+			render 'new'
     end
   end
     def edit

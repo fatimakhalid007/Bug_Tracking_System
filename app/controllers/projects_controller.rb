@@ -61,19 +61,43 @@ class ProjectsController < ApplicationController
     end
   end
   def assignProject
-    @project=Project.find(params[:id])
-    if @project.update_attributes(project_params)
-      if @project.update_attributes(project_params)
-        flash[:success] = "Profile updated"
-        redirect_to @project
-      else
-        flash.now[:warning] = 'Enter correct information.'
-        render assignProject
-      end
-    end
+    # @project=Project.find(params[:id])
+    # if @project.update_attributes(project_params)
+    #   if @project.update_attributes(project_params)
+    #     flash[:success] = "Profile updated"
+    #     redirect_to @project
+    #   else
+    #     flash.now[:warning] = 'Enter correct information.'
+    #     render assignProject
+    #   end
+    # end
 
   end
 
+  def projectBugs
+    @bugs=Bug.where(project_id:params[:id])
+    # respond_to do |format|
+    #   format.html { redirect_to bugs_path }
+    #   format.js
+    # end
+  end
+  def qaBugs
+    @bugs=Bug.where(add_id:params[:id])
+  end
+  def developerBugs
+    @bugs=Bug.where(assign_id:params[:id])
+  end
+  def assign
+     @projects=Project.where.not(assigned_id:nil)
+  end
+  def unAssign
+    @projects=Project.where(assigned_id:nil)
+  end
+  # helper_method:assign
+  helper_method:unAssign
+  helper_method:developerBugs
+  helper_method:qaBugs
+  helper_method:projectBugs
   helper_method:assignProject
   private
     # Use callbacks to share common setup or constraints between actions.

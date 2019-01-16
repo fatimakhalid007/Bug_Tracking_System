@@ -7,6 +7,8 @@
       <th>Owner </th>
       <%end%>
       <th>Assigned </th>
+      <th>bugs count</th>
+      <th>view Bugs</th>
       <th colspan="4"> </th>
     </tr>
   </thead>
@@ -15,17 +17,20 @@
     <% @projects.each do |project| %>
       <tr>
         <% if project.owner_id==current_user.id%>
-        <td><%= project.title %></td>
+        <td><%= project.id %> <%=project.title%></td>
         <td><%= project.description %></td>
         <% if current_user.user_type!='Manager'%>
-        <td><%= project.owner_id %></td>
+        <td><%= project.owner_id %><%="  "+ project_owner_name(project.owner_id).name %></td>
         <%end%>
         <td><%= project.assigned_id %></td>
+        <td><%= projects_bug_count(project.id)%></td>
+        <td><%= link_to 'view bugs', projectBugs_path(project)%></td>
         <td><%= link_to 'Show', project %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
         <%if project.assigned_id==nil%>
-        <td><%=link_to 'Assign Project',edit_project_path(project)%></td>
+        <td><%=link_to 'Assign Project', edit_project_path(project)%></td>
         <%else%>
         <td><%= link_to 'UnAssign Porject',edit_project_path(project)%>
         <%end%>

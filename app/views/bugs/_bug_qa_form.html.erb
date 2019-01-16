@@ -1,0 +1,58 @@
+<%= form_for(bug) do |f| %>
+  <% if bug.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bug.errors.count, "error") %> prohibited this bug from being saved:</h2>
+
+      <ul>
+      <% bug.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :bug_title %>
+    <%= f.text_field :bug_title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bug_description %>
+    <%= f.text_field :bug_description %>
+  </div>
+  <div class="field">
+    <%= f.label :screenshot %>
+    <%= f.file_field :screenshot %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bug_deadline %>
+    <%= f.date_select :bug_deadline %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bug_type %>
+    <%= f.select(:bug_type,options_for_select([['bug'],['feature']]), :include_blank => "Please Select") %><br><br>
+
+  </div>
+
+  <div class="field">
+    <%= f.label :bug_status %>
+    <%= f.select(:bug_status,options_for_select([['unresolved'],['in progress'],['resolved'],['new']]), :include_blank => "Please Select") %><br><br>
+
+  </div>
+
+  <div class="field">
+    <%= f.label :add_id %>
+   <%=f.text_field :add_id ,value: current_user.id,readonly:true%>
+
+  </div>
+  <div class="field">
+    <%= f.label :project_id %>
+    <%= f.select(:project_id,options_for_select(all_projects), :include_blank => "Please Select") %><br><br>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,62 @@
+<%= form_for(bug) do |f| %>
+  <% if bug.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bug.errors.count, "error") %> prohibited this bug from being saved:</h2>
+
+      <ul>
+      <% bug.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :bug_title %>
+    <%= @bug.bug_title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bug_description %>
+    <%= @bug.bug_description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bug_deadline %>
+    <%= @bug.bug_deadline %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bug_type %>
+    <%= @bug.bug_type%>
+  </div>
+
+  <div class="field">
+    <%= f.label :bug_status %>
+    <%if current_user.id==@bug.assign_id%> 
+    <%= f.select(:bug_status,options_for_select([['unresolved'],['in progress'],['resolved'],['new']],:selected=>f.object.bug_status), :include_blank => "Please Select") %><br><br>
+    <%else%>
+     <%=@bug.bug_status %>
+     <%end%>
+  </div>
+
+  <div class="field">
+    <%= f.label :add_id %>
+   <%=@bug.add_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :assign_id %>
+    <%=@bug.assign_id%>
+  </div>
+
+  <div class="field">
+    <%= f.label :project_id %>
+    <%=@bug.project_id%>
+  </div>
+<%if current_user.id==@bug.assign_id%> 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <%end%>
+<% end %>

@@ -1,0 +1,58 @@
+<h2>Bug Details<h2>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bug title:</strong>
+  <%= @bug.bug_title %>
+</p>
+<p>
+  <strong>Bug Image</strong>
+  <%=image_tag @bug.screenshot.url(:thumb) %>
+</p>
+
+<p>
+  <strong>Bug description:</strong>
+  <%= @bug.bug_description %>
+</p>
+
+<p>
+  <strong>Bug deadline:</strong>
+  <%= @bug.bug_deadline %>
+</p>
+
+<p>
+  <strong>Bug type:</strong>
+  <%= @bug.bug_type %>
+</p>
+
+<p>
+  <strong>Bug status:</strong>
+  <%= @bug.bug_status %>
+</p>
+
+<p>
+  <strong>Add:</strong>
+  <%= @bug.add_id %>
+</p>
+
+<p>
+  <strong>Assign:</strong>
+  <%= @bug.assign_id %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @bug.project_id %>
+</p>
+<%if current_user.user_type=='Developer'%>
+<%= link_to 'Edit', edit_bug_path(@bug) %> |
+<%= link_to 'Back',developerBugs_path(current_user.id)%>
+<%elsif current_user.user_type=='Quality Assurance'%>
+<%= link_to 'Edit', edit_bug_path(@bug) %> |
+<%= link_to 'Back',qabugsfeatures_path(current_user.id)%>
+<%else%>
+<%= link_to 'Edit', edit_bug_path(@bug) %> |
+<%= link_to 'Back',bugs_path%>
+
+<%end%>
+

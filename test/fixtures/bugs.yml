@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bug_title: MyString
+  bug_description: MyString
+  bug_deadline: 2019-01-13
+  bug_type: MyString
+  bug_status: MyString
+  add_id: 1
+  assign_id: 1
+  project_id: 1
+
+two:
+  bug_title: MyString
+  bug_description: MyString
+  bug_deadline: 2019-01-13
+  bug_type: MyString
+  bug_status: MyString
+  add_id: 1
+  assign_id: 1
+  project_id: 1

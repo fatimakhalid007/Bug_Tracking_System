@@ -1,0 +1,20 @@
+<h1>Editing Bug</h1>
+<%if current_user.user_type=='Developer'%>
+<%=render 'bug_developer_form', bug:@bug%>
+<%elsif current_user.user_type=='Quality Assurance'%>
+<%=render 'qa_bug_form',bug:@bug%>
+<%elsif current_user.user_type=='Manager'%>
+<%=render 'qa_edit_form', bug: @bug %>
+<%else%>
+<%= render 'form', bug: @bug %>
+<%end%>
+<%if current_user.user_type=='Developer'%>
+<%= link_to 'Edit', edit_bug_path(@bug) %> |
+<%= link_to 'Back',developerBugs_path(current_user.id)%>
+<%elsif current_user.user_type=='Quality Assurance'%>
+<%= link_to 'Edit', edit_bug_path(@bug) %> |
+<%= link_to 'Back',qabugsfeatures_path(current_user)%>
+<%else%>
+<%= link_to 'Edit', edit_bug_path(@bug) %> |
+<%= link_to 'Back',bugs_path%>
+<%end%>

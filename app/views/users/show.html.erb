@@ -6,6 +6,12 @@
  <%=@user.user_type%><br>
 
  <%=@user.email%>
+ <% if @user.user_type=='Quality Assurance'%><br>
+ <%=link_to 'view Bugs created',qaBugs_path(@user.id) %>
+ <%end%>
+ <%if @user.user_type=='Developer'%><br>
+  <%=link_to 'view Bugs Assigned',developerBugs_path(@user.id) %>
+  <%end%>
 
 
 

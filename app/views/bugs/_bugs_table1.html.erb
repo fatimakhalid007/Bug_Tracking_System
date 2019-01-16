@@ -1,0 +1,32 @@
+<table class="t-width">
+  <thead>
+    <tr>
+      <th>Bug title</th>
+      <th>Bug description</th>
+      <th>Bug deadline</th>
+      <th>Bug type</th>
+      <th>Bug status</th>
+      <th>Add</th>
+      <th>Assign</th>
+      <th>Project</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bugs.each do |bug| %>
+      <tr>
+        <td><%= bug.bug_title %></td>
+        <td><%= bug.bug_description %></td>
+        <td><%= bug.bug_deadline %></td>
+        <td><%= bug.bug_type %></td>
+        <td><%= bug.bug_status %></td>
+        <td><%= bug.add_id %></td>
+        <td><%= bug.assign_id %></td>
+        <td><%= bug.project_id %></td>
+        <td><%= link_to 'Show', bug %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
