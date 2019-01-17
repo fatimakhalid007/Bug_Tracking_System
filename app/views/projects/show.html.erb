@@ -24,10 +24,10 @@
   <%= @project.assigned_id %>
 </p>
 <%if current_user.user_type=='Developer'%>
-<%= link_to 'Back', projects_path %>
+	<%= link_to 'Back', projects_path %>
 <%else%>
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+	<%= link_to 'Edit', edit_project_path(@project) %> |
+	<%= link_to 'Back', projects_path %>
 <%end%>
 
 </div>

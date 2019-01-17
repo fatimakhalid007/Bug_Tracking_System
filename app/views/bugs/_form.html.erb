@@ -50,13 +50,17 @@
 
   <div class="field">
     <%= f.label :assign_id %>
-    <%= f.select(:assign_id,options_for_select(all_user_ids),:include_blank => "Please Select") %><br><br>
+    <%= f.select(:assign_id,options_for_select(all_qa_developers),:include_blank => "Please Select") %><br><br>
 
   </div>
 
   <div class="field">
     <%= f.label :project_id %>
+    <%if current_user.user_type=='Manager'%>
+     <%= f.select(:project_id,options_for_select(managers_project.ids), :include_blank => "Please Select") %><br><br>
+    <%else%>
     <%= f.select(:project_id,options_for_select(all_projects), :include_blank => "Please Select") %><br><br>
+    <%end%>
   </div>
 
   <div class="actions">

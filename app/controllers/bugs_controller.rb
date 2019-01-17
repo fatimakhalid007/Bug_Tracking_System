@@ -54,21 +54,24 @@ class BugsController < ApplicationController
   # DELETE /bugs/1
   # DELETE /bugs/1.json
   def destroy
-    creat_id=Bug.where(id:@bug.id).pluck(:add_id)
-    user1=User.where(id:creat_id).pluck(:user_type)
-     user2=User.where(id:creat_id).pluck(:id)
-    if user1[0]=='Manager'
-    @bug.destroy
-    respond_to do |format|
-      format.html { redirect_to bugs_url, notice: 'Bug was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-    else
-    @bug.destroy
-    respond_to do |format|
-      format.html { redirect_to qabugsfeatures_path(user2[0]), notice: 'Bug was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+   creat_id=Bug.where(id:@bug.id).pluck(:add_id)
+   users=User.where(id:creat_id).pluck(:user_type)
+   user2=User.where(id:creat_id).pluck(:id)
+   pro_id=Bug.where(id:@bug_id).pluck(:project_id)
+   user1=Project.where(id:pro_id).pluck(:owner_id)
+   user1=User.where(id:user1).pluck(:user_type)
+  if user1[0]=='Manager'
+  @bug.destroy
+  respond_to do |format|
+    format.html { redirect_to bugs_url, notice: 'Bug was successfully destroyed.' }
+    format.json { head :no_content }
+  end
+  else
+  @bug.destroy
+  respond_to do |format|
+    format.html { redirect_to qabugsfeatures_path(user2[0]), notice: 'Bug was successfully destroyed.' }
+    format.json { head :no_content }
+  end
 end
 
 

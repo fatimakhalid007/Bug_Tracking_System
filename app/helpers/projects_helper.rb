@@ -3,11 +3,18 @@ module ProjectsHelper
        u=User.where.not(id:current_user.id)
        u.ids
 	end
+	def all_qa_developers
+		u=User.where.not(id:current_user.id,user_type:'Manager')
+		u.ids
+	end
 	def all_users
 		User.all
 	end
 	def all_projects
 		Project.ids
+	end
+	def managers_project
+		Project.where(owner_id:current_user.id)
 	end
 	def all_projectid(add_id)
 		Project.where(assigned_id:add_id).pluck(:id)

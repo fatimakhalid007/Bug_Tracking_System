@@ -13,4 +13,4 @@
 <%= f.password_field :password_confirmation %><br>
 
 <%= f.label :user_type %>
-<%= f.select(:user_type,options_for_select([['Manager'],['Developer'],['Quality Assurance']])) %><br><br>
+<%= f.select(:user_type,options_for_select([['Manager'],['Developer'],['Quality Assurance']],:selectd=>f.object.user_type),:include_blank=>'please select') %><br><br>

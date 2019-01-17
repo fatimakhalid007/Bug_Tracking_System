@@ -1,18 +1,20 @@
+<%if @bug!=nil%>
 <h1>Bugs Of Project <%=project_name(@bugs[0].project_id)%></h1>
-
+<%end%>
+<h1>Bugs of Project</h1>
 
 <%=render 'bugs/bugs_table1'%>
 
 <%if current_user.user_type!='Developer' && current_user.user_type!='Quality Assurance'%>
-<br><%=link_to 'Show Only Features' ,allfeatures_path %>
-<br><%=link_to 'show only bugs',allbugs_path %>
+	<br><%=link_to 'Show Only Features' ,allfeatures_path %>
+	<br><%=link_to 'show only bugs',allbugs_path %>
 <%end%>
 <%if current_user.user_type=='Quality Assurance'%>
-<%=link_to 'show resolved bugs' , qaresolvedbugs_path(current_user)%><br>
+	<%=link_to 'show resolved bugs' , qaresolvedbugs_path(current_user)%><br>
 
-<%=link_to 'show unresolved bugs', qaunresolvedbugs_path(current_user)%><br>
-<%=link_to 'show new bugs',qanewbugs_path(current_user)%><br>
-<%=link_to 'show in progress bugs',qainprogressbugs_path(current_user)%><br>
+	<%=link_to 'show unresolved bugs', qaunresolvedbugs_path(current_user)%><br>
+	<%=link_to 'show new bugs',qanewbugs_path(current_user)%><br>
+	<%=link_to 'show in progress bugs',qainprogressbugs_path(current_user)%><br>
 <%end%>
 
 

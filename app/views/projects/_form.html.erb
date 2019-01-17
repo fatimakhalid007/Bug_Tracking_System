@@ -1,5 +1,5 @@
 <%= form_for(project) do |f| %>
-  <% if project.errors.any? %>
+<!--   <% if project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
@@ -9,7 +9,9 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
+  <% end %> -->
+  <%= render 'shared/error_messages' , object: f.object%>
+
 
   <div class="field">
     <%= f.label :title %>
@@ -29,7 +31,7 @@
   <div class="field">
     <%= f.label :assigned_id %>
   <!--   <%= f.text_field :assigned_id %> -->
-  <%= f.select(:assigned_id,options_for_select(all_user_ids), :include_blank => "Please Select") %><br><br>
+  <%= f.select(:assigned_id,options_for_select(all_qa_developers,:selected=>f.object.assigned_id), :include_blank => "Please Select") %><br><br>
 
   </div>
 

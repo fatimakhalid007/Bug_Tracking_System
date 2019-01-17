@@ -1,12 +1,14 @@
 <% provide(:title, 'All Developers') %>
 <h1>All users</h1>
 
+<%=will_paginate @user%>
 <ul class="users">
   <% @user.each do |user| %>
     <li>
-     <%=image_tag user.image.url(:thumb)%>
+      <%=image_tag user.image.url(:thumb)%>
 
       <%= link_to user.name, user_path(user.id) %>
     </li><br><br>
     <% end %>
 </ul>
+<%=will_paginate @user%>

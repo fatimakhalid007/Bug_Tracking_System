@@ -1,6 +1,6 @@
 <% provide(:title, 'All Developers') %>
 <h1>All users</h1>
-
+<%=will_paginate @user%>
 <ul class="users">
   <% @user.each do |user| %>
     <li>
@@ -10,3 +10,4 @@
     </li><br><br>
     <% end %>
 </ul>
+<%=will_paginate @user%>

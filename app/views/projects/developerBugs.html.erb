@@ -4,9 +4,9 @@
 
 <%=render 'bugs/bugs_table'%>
 <%if current_user.user_type=='Developer'%>
- <%=link_to 'View Only Features',developersfeature_path(current_user)%><br>
- <%=link_to 'view only bugs',developersbugs_path(current_user.id)%><br>
- <%=link_to 'view completed bug/features',developersresolved_path(current_user.id)%><br>
+	<%=link_to 'View Only Features',developersfeature_path(current_user)%><br>
+ 	<%=link_to 'view only bugs',developersbugs_path(current_user.id)%><br>
+ 	<%=link_to 'view completed bug/features',developersresolved_path(current_user.id)%><br>
 <%end%>
 
 <br>

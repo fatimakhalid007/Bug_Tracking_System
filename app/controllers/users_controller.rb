@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 	end
 	def index
 		@user=User.all
+    @user = @user.paginate(page: params[:page], :per_page => 6)
 	end
 	def create
 		 # byebug
@@ -39,9 +40,11 @@ class UsersController < ApplicationController
   end
   def developers
   	@user=User.where(user_type:'Developer')
+    @user=@user.paginate(page: params[:page], :per_page => 6)
   end
   def quas
   	@user=User.where(user_type:'Quality Assurance')
+    @user=@user.paginate(page: params[:page], :per_page => 6)
   end
   helper_method:developers
   helper_method:quas

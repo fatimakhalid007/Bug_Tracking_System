@@ -1,18 +1,16 @@
 <% provide(:title, 'Profile') %>
 <h1>Profile</h1>
 <div class="pf-image">
-<%=image_tag @user.image.url(:thumb) %><br>
- <p class="n-font"><b><%=@user.name%></b></p>
- <%=@user.user_type%><br>
+	<%=image_tag @user.image.url(:thumb) %><br>
+    <p>User Id:<%=@user.id%></p>
+ 	<p class="n-font"><b><%=@user.name%></b></p>
+ 	<%=@user.user_type%><br>
 
- <%=@user.email%>
- <% if @user.user_type=='Quality Assurance'%><br>
- <%=link_to 'view Bugs created',qaBugs_path(@user.id) %>
- <%end%>
- <%if @user.user_type=='Developer'%><br>
-  <%=link_to 'view Bugs Assigned',developerBugs_path(@user.id) %>
-  <%end%>
-
-
-
+ 	<%=@user.email%>
+ 	<% if @user.user_type=='Quality Assurance'%><br>
+ 		<%=link_to 'view Bugs created',qaBugs_path(@user.id) %>
+ 	<%end%>
+ 	<%if @user.user_type=='Developer'%><br>
+  		<%=link_to 'view Bugs Assigned',developerBugs_path(@user.id) %>
+  	<%end%>
 </div>
